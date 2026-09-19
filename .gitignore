@@ -1,0 +1,31 @@
+# --- Signoff Bridge website repo ---
+# This repository tracks only the one-page site: index.html + images/.
+# Everything else in this folder belongs to other projects and is not committed.
+
+# Other projects in this folder
+/defect-board/
+/digest-agent/
+/hello-agent/
+
+# Planning notes, not part of the site
+/PRD.md
+/TECH-STACK.md
+/IMPLEMENTATION-PLAN.md
+/REPORT.md
+/WORKLOG.md
+/AGENTS.md
+/kilo.jsonc
+/README.md
+/faq.txt
+
+# Secrets — never commit
+key.txt
+composio-key.txt
+*.key
+.env
+.env.*
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store

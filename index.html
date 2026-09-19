@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signoff Bridge — Release QA for Salesforce implementation partners, Hyderabad</title>
+<meta name="description" content="A fixed-scope Release QA Audit for Salesforce implementation partners in Hyderabad. Rs 25,000 a project.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================================
+  CONTACT DETAILS — supplied by Azeezuddin, used exactly as given
+    Booking:  https://cal.com/azeez-ansari/20-min-intro-call
+    WhatsApp: 919160585018
+    Email:    azeezuddin.mohd@gmail.com
+    Name:     Azeezuddin
+  SLOTS STILL TO FILL IN (by design — they are not claims I was given):
+    [CLIENT QUOTE], [YOUR RESULT], [YOUR TIMELINE] — in the Proof section.
+  Photos: the folder holds one portrait, two logos and one service shot. The
+  top screen uses the portrait; the speaking and working frames are inside the
+  service shot band, so there are no separate speaking/working files.
+  ============================================================================
+-->
+
+<style>
+  /* ------------------------------------------------------------------ */
+  /* Palette. Every colour is named with its hex code.                  */
+  /* ------------------------------------------------------------------ */
+  :root {
+    --deep-teal:    #0F6B6B;  /* accent only: buttons, one headline word, rules, icons */
+    --warm-slate:   #5C6B73;  /* quiet labels and lines */
+    --midnight-ink: #101820;  /* body text and dark ground */
+    --soft-cream:   #F7F3EC;  /* page background and cards */
+    --paper:        #FFFFFF;  /* card faces and alternating section ground */
+    --line:         rgba(92, 107, 115, 0.30); /* Warm Slate #5C6B73 at 30% for hairlines */
+    --panel:        rgba(247, 243, 236, 0.95); /* Soft Cream #F7F3EC over the hero photo */
+
+    /* Type */
+    --font-head: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    /* Spacing: 56px on a phone, 96px on a laptop */
+    --pad-y: 56px;
+    --gutter: 20px;
+    --maxw: 1120px;
+    --measure: 40rem; /* about 70 characters a line at 18px */
+  }
+  @media (min-width: 900px) {
+    :root { --pad-y: 96px; --gutter: 24px; }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--soft-cream);
+    color: var(--midnight-ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img { max-width: 100%; }
+
+  a { color: var(--deep-teal); }
+
+  h1, h2, h3 { font-family: var(--font-head); font-weight: 600; margin: 0; }
+
+  h1 {
+    font-size: clamp(2.35rem, 7vw, 4.1rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: clamp(1.75rem, 4.5vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 2.6vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  p { margin: 0 0 1rem; max-width: var(--measure); }
+
+  .accent { color: var(--deep-teal); }
+
+  .label {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-slate);
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+
+  .rule {
+    width: 56px;
+    height: 3px;
+    border: 0;
+    background: var(--deep-teal);
+    margin: 0 0 1.5rem;
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+  .narrow { max-width: 760px; }
+
+  section { padding-top: var(--pad-y); padding-bottom: var(--pad-y); }
+
+  /* Skip link for keyboard users */
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--midnight-ink);
+    color: var(--soft-cream);
+    padding: 12px 16px;
+    z-index: 20;
+  }
+  .skip:focus { left: 12px; top: 12px; }
+
+  /* ------------------------------------------------------------------ */
+  /* Buttons — Deep Teal accent, tap targets at least 44px              */
+  /* ------------------------------------------------------------------ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 12px 22px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--deep-teal);
+    color: var(--soft-cream);
+  }
+  .btn-primary:hover { background: var(--midnight-ink); color: var(--soft-cream); }
+  .btn-primary:focus-visible { outline: 3px solid var(--midnight-ink); outline-offset: 2px; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--midnight-ink);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--deep-teal); color: var(--deep-teal); }
+  .btn-ghost:focus-visible { outline: 3px solid var(--deep-teal); outline-offset: 2px; }
+
+  .btn-lg { min-height: 56px; font-size: 1.06rem; padding: 15px 28px; }
+
+  .icon { width: 24px; height: 24px; flex: 0 0 auto; }
+
+  /* ------------------------------------------------------------------ */
+  /* Header                                                             */
+  /* ------------------------------------------------------------------ */
+  .site-header {
+    background: var(--soft-cream);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    min-height: 72px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .site-header img { height: 40px; width: auto; display: block; }
+
+  /* ------------------------------------------------------------------ */
+  /* Top of the page — headline, one line, the booking button, my photo  */
+  /* ------------------------------------------------------------------ */
+  .hero {
+    position: relative;
+    background: var(--soft-cream);
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .hero-panel { position: relative; padding: 56px 0 40px; }
+  .hero-inner { max-width: 560px; }
+  .hero-panel p.lede {
+    font-size: 1.16rem;
+    color: var(--warm-slate);
+    margin: 1.25rem 0 2rem;
+  }
+  .hero-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 900px) {
+    .hero { min-height: 82vh; display: flex; align-items: center; }
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 60% 30%;
+      z-index: 0;
+    }
+    .hero-panel { width: 100%; padding: 96px 0; z-index: 1; }
+    .hero-inner {
+      background: var(--panel);
+      padding: 48px;
+      border-radius: 4px;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* The problem, in the client's words — dark ground for rhythm         */
+  /* ------------------------------------------------------------------ */
+  .problem {
+    background: var(--midnight-ink);
+    color: var(--soft-cream);
+  }
+  .problem .label { color: var(--warm-slate); }
+  .problem blockquote {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: clamp(1.35rem, 3.4vw, 2rem);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    max-width: 34rem;
+  }
+  .problem blockquote p { max-width: none; margin: 0; }
+
+  /* ------------------------------------------------------------------ */
+  /* The three services and the price                                    */
+  /* ------------------------------------------------------------------ */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 2.5rem;
+  }
+  @media (min-width: 760px) {
+    .cards { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 32px 28px;
+  }
+  .card .icon { color: var(--warm-slate); margin-bottom: 1.25rem; }
+  .card h3 { margin-bottom: 0.6rem; }
+  .card p { margin: 0; color: var(--midnight-ink); }
+
+  .price {
+    margin-top: 2.5rem;
+    font-family: var(--font-head);
+    font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+    max-width: none;
+  }
+  .price span { color: var(--warm-slate); font-family: var(--font-body); font-size: 1rem; }
+
+  /* ------------------------------------------------------------------ */
+  /* The service shot runs as a full-width band of its own               */
+  /* ------------------------------------------------------------------ */
+  .shot-band { padding: 0; background: var(--midnight-ink); }
+  .shot-band img { display: block; width: 100%; height: auto; }
+  .shot-band figcaption {
+    color: var(--warm-slate);
+    font-size: 0.85rem;
+    padding: 12px var(--gutter);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* How it works — three steps                                          */
+  /* ------------------------------------------------------------------ */
+  .steps { background: var(--paper); }
+  .steps-list {
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 860px) {
+    .steps-list { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  }
+  .steps-list li { display: grid; gap: 12px; }
+  .step-num {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    color: var(--deep-teal);
+    line-height: 1;
+  }
+  .steps-list p { margin: 0; max-width: 30rem; }
+
+  /* ------------------------------------------------------------------ */
+  /* Who I am                                                            */
+  /* ------------------------------------------------------------------ */
+  .about-grid { display: grid; gap: 32px; }
+  @media (min-width: 860px) {
+    .about-grid { grid-template-columns: 2fr 1fr; align-items: start; gap: 48px; }
+  }
+  .about-name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 1.5rem 0 1rem;
+  }
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 60% 28%;
+    display: block;
+    flex: 0 0 auto;
+  }
+  .about-name h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+
+  /* ------------------------------------------------------------------ */
+  /* Proof — slots for you to fill in                                    */
+  /* ------------------------------------------------------------------ */
+  .proof { background: var(--paper); border-top: 1px solid var(--line); }
+  .proof p {
+    font-size: 1.06rem;
+    margin: 0 0 1rem;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Contact                                                             */
+  /* ------------------------------------------------------------------ */
+  .contact .btn-primary { margin-top: 0.5rem; }
+  .contact-alt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Footer                                                              */
+  /* ------------------------------------------------------------------ */
+  .site-footer {
+    background: var(--midnight-ink);
+    color: var(--soft-cream);
+    border-top: 1px solid var(--deep-teal);
+  }
+  .site-footer .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .site-footer img { height: 44px; width: auto; display: block; margin-bottom: 16px; }
+  .site-footer p { color: var(--warm-slate); font-size: 0.92rem; margin: 0; }
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container">
+    <a href="#main" aria-label="Signoff Bridge — back to top">
+      <img src="images/White%20final%20logo.jpeg"
+           alt="Signoff Bridge logo."
+           width="1024" height="1024">
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== TOP OF THE PAGE ===================== -->
+  <section class="hero">
+    <div class="hero-panel">
+      <div class="container">
+        <div class="hero-inner">
+          <h1>Release QA that <span class="accent">ships</span> with you.</h1>
+          <p class="lede">A fixed-scope release QA audit for Salesforce implementation partners in Hyderabad &mdash; the test plan read, the regression run, and the sign-off in place before go-live.</p>
+          <a class="btn btn-primary btn-lg" href="https://cal.com/azeez-ansari/20-min-intro-call">Book a 20 minute call</a>
+        </div>
+      </div>
+    </div>
+    <!--
+      The brief's "speaking" photo was not in the images folder, so the portrait
+      you do have fills the top screen. To use a wider speaking photo later,
+      point this src at it (and update width/height/alt).
+    -->
+    <img class="hero-photo"
+         src="images/Profile%20Photo.jpeg"
+         alt="The founder of Signoff Bridge, wearing glasses and a suit, photographed in front of the Signoff Bridge logo."
+         width="1376" height="768">
+  </section>
+
+  <!-- ===================== THE PROBLEM, IN THE CLIENT'S WORDS ===================== -->
+  <section class="problem">
+    <div class="container narrow">
+      <p class="label">The problem</p>
+      <blockquote>
+        <p>&ldquo;Every release, I pull testers off other work to run regression by hand. We ship it, the client finds the defects after go-live, and we pay for the rework and the slipped dates.&rdquo;</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ===================== THE THREE SERVICES AND THE PRICE ===================== -->
+  <section class="services">
+    <div class="container">
+      <hr class="rule">
+      <h2>What I do about it</h2>
+
+      <div class="cards">
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="3" width="16" height="18" rx="2"></rect>
+            <path d="M8 8h8M8 12h8M8 16h5"></path>
+          </svg>
+          <h3>Release sign-off intake form</h3>
+          <p>One place to raise the release, attach the test plan and hand it over.</p>
+        </article>
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <path d="M9 4v16M15 4v16"></path>
+          </svg>
+          <h3>Go-live defect chase board</h3>
+          <p>Every defect after go-live tracked in one board until it closes.</p>
+        </article>
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m3 7 9 6 9-6"></path>
+          </svg>
+          <h3>Monday Salesforce change digest</h3>
+          <p>One Monday mail that shows what changed in the org that week.</p>
+        </article>
+      </div>
+
+      <p class="price">Rs 25,000 a project. <span>It covers everything the three projects do.</span></p>
+    </div>
+  </section>
+
+  <!-- ===================== THE SERVICE SHOT, FULL WIDTH ===================== -->
+  <figure class="shot-band">
+    <img src="images/Service%20shot.jpeg"
+         alt="A grid of Signoff Bridge service images: Defects Caught, Regression Passed, Go-Live Ready and Release Sign-Off."
+         width="1376" height="768">
+  </figure>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="steps">
+    <div class="container">
+      <hr class="rule">
+      <h2>How it works</h2>
+      <ol class="steps-list">
+        <li>
+          <span class="step-num" aria-hidden="true">1</span>
+          <p>I read your test plan and your release scope.</p>
+        </li>
+        <li>
+          <span class="step-num" aria-hidden="true">2</span>
+          <p>I run the API and Salesforce regression pass on the release.</p>
+        </li>
+        <li>
+          <span class="step-num" aria-hidden="true">3</span>
+          <p>You get the reusable checklist, the defect log and the CI/CD test pipeline you keep using.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== WHO I AM ===================== -->
+  <section class="about">
+    <div class="container about-grid">
+      <div>
+        <hr class="rule">
+        <h2>Who I am</h2>
+        <div class="about-name">
+          <img class="avatar"
+               src="images/Profile%20Photo.jpeg"
+               alt="Portrait of Azeezuddin, founder of Signoff Bridge."
+               width="1376" height="768">
+          <h3>Azeezuddin</h3>
+        </div>
+        <p>Why I started: I kept watching good delivery teams lose a week to hand-run regression, so I built a fixed-scope audit that signs the release off before go-live.</p>
+      </div>
+      <!--
+        The brief's "working" photo sits here at about a third of the width.
+        It was not in the images folder, so this column is left out and the
+        section closes up. Add it here when the file exists.
+      -->
+    </div>
+  </section>
+
+  <!-- ===================== PROOF (SLOTS TO FILL IN) ===================== -->
+  <section class="proof">
+    <div class="container narrow">
+      <hr class="rule">
+      <h2>Proof</h2>
+      <p>What a client says: <strong>[CLIENT QUOTE]</strong></p>
+      <p>A result it has produced: <strong>[YOUR RESULT]</strong></p>
+      <p>How long it takes: <strong>[YOUR TIMELINE]</strong></p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact" id="contact">
+    <div class="container narrow">
+      <hr class="rule">
+      <h2>Start with a call</h2>
+      <p>Tell me about the release. If it is a fit, I read the test plan and scope the audit with you.</p>
+
+      <a class="btn btn-primary btn-lg" href="https://cal.com/azeez-ansari/20-min-intro-call">Book a 20 minute call</a>
+
+      <div class="contact-alt">
+        <a class="btn btn-ghost" href="https://wa.me/919160585018?text=Hi%2C%20I%20found%20you%20through%20Signoff%20Bridge%20and%20I%27d%20like%20to%20talk%20about%20a%20release%20QA%20audit.">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.6a8.4 8.4 0 0 1-12.3 7.4L4 20l1.1-4.2A8.4 8.4 0 1 1 21 11.6z"></path>
+          </svg>
+          Message me on WhatsApp
+        </a>
+
+        <a class="btn btn-ghost" href="mailto:azeezuddin.mohd@gmail.com?subject=Release%20QA%20audit%20enquiry%20%E2%80%94%20Signoff%20Bridge">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m3 7 9 6 9-6"></path>
+          </svg>
+          Email me
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <img src="images/Dark%20logo.jpeg"
+         alt="Signoff Bridge logo."
+         width="1024" height="1024">
+    <p>Signoff Bridge &mdash; release QA audit for Salesforce implementation partners, Hyderabad.</p>
+  </div>
+</footer>
+
+<script>
+  /* If a picture file is missing, hide it so the section keeps its heading and
+     words and closes up the space instead of showing a broken image. */
+  document.querySelectorAll("img").forEach(function (img) {
+    function drop() { img.hidden = true; }
+    img.addEventListener("error", drop);
+    if (img.complete && img.naturalWidth === 0) drop();
+  });
+</script>
+</body>
+</html>
